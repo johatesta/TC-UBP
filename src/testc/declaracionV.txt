@@ -1,0 +1,10 @@
+int a;
+int b = 0;
+double c, d=1, e;
+char c = 'a';
+
+int a(){
+    a=b;
+    a+=b;
+    b++;
+}

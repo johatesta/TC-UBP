@@ -1,0 +1,8 @@
+void prueba();
+void prueba(int a, b);
+int prueba(int a, int b);
+
+int main(){
+    prueba();
+    prueba(2, 3);
+}

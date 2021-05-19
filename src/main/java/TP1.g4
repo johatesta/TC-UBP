@@ -77,4 +77,156 @@ CARACTER : '\u0000'..'\uFFFE' ;
 VALORCHAR: '\'' CARACTER '\''  ;
 NUMDOUBLE: [-+]? NUMINT '.' NUMINT; 
 
+//REGLAS INICIALES
+prog : instrucciones
+     ;
+
+instrucciones : inst instrucciones
+              | bloque instrucciones
+              | //Puede ser un programa vacio
+              ;
+
+inst : variables 
+     | deffunc
+     | llamadafunc
+     | returnD
+     | definicion
+     ; 
+
+bloque : LA instrucciones LC
+       ;
+
+//VARIABLES
+variables : declaracionv // DECLARACION PURA y DECLARACION Y ASIGNACION
+         | asignacionv //ASIGNACION PURA
+         ;
+
+declaracionv : tipovar lista PUNTOYCOMA
+            ;               
+
+tipovar : INT | CHAR | DOUBLE ;
+
+lista : ID asignacion lista
+       | COMA ID asignacion lista
+       |
+       ;
+
+asignacion : assignMode expSimple 
+           |
+           ;
+
+assignMode : MASIGUAL | MENOSIGUAL | PORIGUAL | BARRAIGUAL | MODULOIGUAL | IGUAL ;
+
+//Expresiones matematicas y logicas
+expresion : ID assignMode expresion
+          | ID MASMAS
+          | ID MENOSMENOS
+          | expSimple
+          ;
+
+//Expresiones logicas (AND, OR, NOT)
+expSimple : expSimple OR exprAND 
+          | exprAND
+          ;
+
+exprAND : exprAND AND exprNOT
+        | exprNOT
+        ;
+
+exprNOT : NOT exprNOT
+        | exprRelacional 
+        ;
+
+//Expresiones relacionales (>, < , >=, <=, =)
+exprRelacional : termino comparadores termino
+               | termino
+               ;
+
+comparadores : MAYOR | MENOR | IGUALIGUAL | MAYORIGUAL | MENORIGUAL | DISTINTOIGUAL;
+
+//Expresiones matematicas
+termino : termino operadores termino
+        | factor
+        ;
+       
+operadores : MAS | MENOS | ASTERISCO | DIVISION | MODULO ;
+
+factor : valores 
+       | ID
+       ;
+
+valores: PA expresion PC
+         | llamadafunc
+         | valorvar
+         ;
+
+valorvar : NUMINT | VALORCHAR | NUMDOUBLE | TRUE | FALSE ;
+
+//ASIGNACION PURA
+asignacionv : lista PUNTOYCOMA
+            ;
+
+//funciones
+tipofunc: INT | CHAR | DOUBLE | VOID ;
+
+//Delcaracion y definicion de funciones
+deffunc : tipofunc ID PA declaracionfunc PC definicion
+        | ID PA declaracionfunc PC definicion
+        ;
+
+declaracionfunc : tipovar ID declaracionfunc
+                  |   COMA tipovar ID declaracionfunc
+                  |
+                  ;
+
+definicion : expresionDef
+           | bloque
+           | expresionIF
+           | expresionWHILE
+           | expresionFOR
+           | returnD
+           ;
+
+expresionDef : expresion PUNTOYCOMA
+             | PUNTOYCOMA
+             ;
+
+expresionIF : IF PA expSimple PC definicion
+            | IF PA expSimple PC definicion ELSE definicion
+            ;
+
+expresionWHILE : WHILE PA expSimple PC definicion
+               ;
+
+expresionFOR : FOR PA loopCtrl PC definicion///COMPLETAR//////
+             ;
+
+loopCtrl : loopInit loopCond loopIncr
+         ;
+
+loopInit : declaracionv
+         ;
+
+loopCond : expSimple PUNTOYCOMA
+         ;
+
+loopIncr : expresion
+         ;
+
+//Llamadas funciones
+llamadafunc : ID PA argumentos PC PUNTOYCOMA
+            ;
+
+argumentos : listaArgs
+           |
+           ;
+
+listaArgs : listaArgs COMA expresion 
+        | expresion 
+        ;
+
+//Return
+returnD : RETURN expresion PUNTOYCOMA
+        | RETURN PUNTOYCOMA
+       ;
 
