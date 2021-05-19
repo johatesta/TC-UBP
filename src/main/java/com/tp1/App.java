@@ -1,13 +1,15 @@
 package com.tp1;
 
 /**
- * Hello world!
+ * Johana testa
  *
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+/**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
     }
 }

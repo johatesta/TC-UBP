@@ -4,6 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        
         {
             "type": "java",
             "name": "Launch Current File",
@@ -16,6 +17,21 @@
             "request": "launch",
             "mainClass": "com.tp1.App",
             "projectName": "demo"
+        },
+        {
+            //"antlr4.generation.mode": "external",
+            //"antlr4.generation.visitors": true,
+            "name": "Debug ANTLR4 grammar",
+            "type": "antlr-debug",
+            "request": "launch",
+            //Archivo a parsear
+            "input":"src/testc/pruebaTodo.c",
+            //Simbolo incial
+            "startRule": "s",
+            //Arbol
+            "printParseTree":true,
+            "visualParseTree": true
+
         }
     ]
 }
