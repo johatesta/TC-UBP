@@ -7,7 +7,7 @@
         "type": "antlr-debug",
         "request": "launch",
         //Archivo a parsear
-        "input":"src/testc/pruebaTodo.c",
+        "input":"src/ejemplo.txt",
         //Simbolo incial
         "startRule": "s",
         //Arbol

@@ -1,5 +1,3 @@
-// Generated from c:\Users\USUARIO\Downloads\TP2-Tecnicas-de-Compilacion-master\src\main\java\tp1\programa.g4 by ANTLR 4.8
-
 
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;

@@ -31,5 +31,8 @@ public class App {
         // parser.s();
         ParseTree tree =  parser.programa();
         System.out.println(tree);
+         // Imprime el arbol obtenido
+         System.out.println("ARBOL SINTÁCTICO: " + tree.toStringTree(parser));         
+        
     }
 }
