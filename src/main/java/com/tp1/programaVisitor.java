@@ -1,6 +1,6 @@
-// Generated from /mnt/c/users/agux/desktop/Archivos Adicionales/Universidad/9no Cuatrimestre/Tecnicas de Compilacion/tp1/src/main/java/tp1/programa.g4 by ANTLR 4.8
 
-package tp1;
+
+package com.tp1;
 
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 

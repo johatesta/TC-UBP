@@ -1,4 +1,4 @@
-package tp1;
+package com.tp1;
 
 import java.util.LinkedList;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -6,7 +6,7 @@ import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.xpath.XPath;
 
-import tp1.TablaSimbolos.*;
+import com.tp1.TablaSimbolos.*;
 
 
 public class DataFuncion {

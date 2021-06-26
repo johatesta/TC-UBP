@@ -1,6 +1,7 @@
-package tp1;
+package com.tp1;
 
-import tp1.TablaSimbolos.*;
+//import com.tp1.TablaSimbolos.*;
+import com.tp1.TablaSimbolos.*;
 
 import java.util.LinkedList;
 

@@ -1,4 +1,4 @@
-package tp1;
+package com.tp1;
 
 public class ErrorListener {
     private static ErrorListener instance = null;
