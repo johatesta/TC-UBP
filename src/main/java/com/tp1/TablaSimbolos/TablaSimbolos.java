@@ -140,9 +140,9 @@ public class TablaSimbolos {
         }
       
         ctx = 1;
-        System.out.println("\n------HISTORIAL------");
+        
         for (HashMap<String, ID> contexto : this.historialTablaSimbolos) {
-            System.out.println("Contexto: " + ctx++ + " {");
+            System.out.println("Context: " + ctx++ + " {");
             for (ID id : contexto.values()) {
                 System.out.println("    " + id.toString());
             }

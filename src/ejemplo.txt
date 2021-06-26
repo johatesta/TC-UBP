@@ -1,0 +1,13 @@
+int main(){    
+    int x = 0
+    int y = 9 + 8;
+
+    while(x<c || x==0){
+        int h = 10 / 3 * (12 + 3);
+        h = h + 1;
+    }
+
+    for(i=0;i<18 || i>9;i=i+2){
+        h = 3 * t;
+    }
+}
