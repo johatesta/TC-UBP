@@ -9,7 +9,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class TP1Lexer extends Lexer {
+public class programaLexer extends Lexer {
 	static { RuntimeMetaData.checkVersion("4.8", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -101,7 +101,7 @@ public class TP1Lexer extends Lexer {
 	}
 
 
-	public TP1Lexer(CharStream input) {
+	public programaLexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}

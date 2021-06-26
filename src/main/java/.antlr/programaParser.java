@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class TP1Parser extends Parser {
+public class programaParser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.8", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -115,7 +115,7 @@ public class TP1Parser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
-	public TP1Parser(TokenStream input) {
+	public programaParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
@@ -288,11 +288,11 @@ public class TP1Parser extends Parser {
 	}
 
 	public static class BloqueContext extends ParserRuleContext {
-		public TerminalNode LA() { return getToken(TP1Parser.LA, 0); }
+		public TerminalNode LA() { return getToken(programaParser.LA, 0); }
 		public InstruccionesContext instrucciones() {
 			return getRuleContext(InstruccionesContext.class,0);
 		}
-		public TerminalNode LC() { return getToken(TP1Parser.LC, 0); }
+		public TerminalNode LC() { return getToken(programaParser.LC, 0); }
 		public BloqueContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -384,7 +384,7 @@ public class TP1Parser extends Parser {
 		public ListaContext lista() {
 			return getRuleContext(ListaContext.class,0);
 		}
-		public TerminalNode PUNTOYCOMA() { return getToken(TP1Parser.PUNTOYCOMA, 0); }
+		public TerminalNode PUNTOYCOMA() { return getToken(programaParser.PUNTOYCOMA, 0); }
 		public DeclaracionvContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -417,9 +417,9 @@ public class TP1Parser extends Parser {
 	}
 
 	public static class TipovarContext extends ParserRuleContext {
-		public TerminalNode INT() { return getToken(TP1Parser.INT, 0); }
-		public TerminalNode CHAR() { return getToken(TP1Parser.CHAR, 0); }
-		public TerminalNode DOUBLE() { return getToken(TP1Parser.DOUBLE, 0); }
+		public TerminalNode INT() { return getToken(programaParser.INT, 0); }
+		public TerminalNode CHAR() { return getToken(programaParser.CHAR, 0); }
+		public TerminalNode DOUBLE() { return getToken(programaParser.DOUBLE, 0); }
 		public TipovarContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -457,14 +457,14 @@ public class TP1Parser extends Parser {
 	}
 
 	public static class ListaContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(TP1Parser.ID, 0); }
+		public TerminalNode ID() { return getToken(programaParser.ID, 0); }
 		public AsignacionContext asignacion() {
 			return getRuleContext(AsignacionContext.class,0);
 		}
 		public ListaContext lista() {
 			return getRuleContext(ListaContext.class,0);
 		}
-		public TerminalNode COMA() { return getToken(TP1Parser.COMA, 0); }
+		public TerminalNode COMA() { return getToken(programaParser.COMA, 0); }
 		public ListaContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -579,12 +579,12 @@ public class TP1Parser extends Parser {
 	}
 
 	public static class AssignModeContext extends ParserRuleContext {
-		public TerminalNode MASIGUAL() { return getToken(TP1Parser.MASIGUAL, 0); }
-		public TerminalNode MENOSIGUAL() { return getToken(TP1Parser.MENOSIGUAL, 0); }
-		public TerminalNode PORIGUAL() { return getToken(TP1Parser.PORIGUAL, 0); }
-		public TerminalNode BARRAIGUAL() { return getToken(TP1Parser.BARRAIGUAL, 0); }
-		public TerminalNode MODULOIGUAL() { return getToken(TP1Parser.MODULOIGUAL, 0); }
-		public TerminalNode IGUAL() { return getToken(TP1Parser.IGUAL, 0); }
+		public TerminalNode MASIGUAL() { return getToken(programaParser.MASIGUAL, 0); }
+		public TerminalNode MENOSIGUAL() { return getToken(programaParser.MENOSIGUAL, 0); }
+		public TerminalNode PORIGUAL() { return getToken(programaParser.PORIGUAL, 0); }
+		public TerminalNode BARRAIGUAL() { return getToken(programaParser.BARRAIGUAL, 0); }
+		public TerminalNode MODULOIGUAL() { return getToken(programaParser.MODULOIGUAL, 0); }
+		public TerminalNode IGUAL() { return getToken(programaParser.IGUAL, 0); }
 		public AssignModeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -622,15 +622,15 @@ public class TP1Parser extends Parser {
 	}
 
 	public static class ExpresionContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(TP1Parser.ID, 0); }
+		public TerminalNode ID() { return getToken(programaParser.ID, 0); }
 		public AssignModeContext assignMode() {
 			return getRuleContext(AssignModeContext.class,0);
 		}
 		public ExpresionContext expresion() {
 			return getRuleContext(ExpresionContext.class,0);
 		}
-		public TerminalNode MASMAS() { return getToken(TP1Parser.MASMAS, 0); }
-		public TerminalNode MENOSMENOS() { return getToken(TP1Parser.MENOSMENOS, 0); }
+		public TerminalNode MASMAS() { return getToken(programaParser.MASMAS, 0); }
+		public TerminalNode MENOSMENOS() { return getToken(programaParser.MENOSMENOS, 0); }
 		public ExpSimpleContext expSimple() {
 			return getRuleContext(ExpSimpleContext.class,0);
 		}
@@ -703,7 +703,7 @@ public class TP1Parser extends Parser {
 		public ExpSimpleContext expSimple() {
 			return getRuleContext(ExpSimpleContext.class,0);
 		}
-		public TerminalNode OR() { return getToken(TP1Parser.OR, 0); }
+		public TerminalNode OR() { return getToken(programaParser.OR, 0); }
 		public ExpSimpleContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -774,7 +774,7 @@ public class TP1Parser extends Parser {
 		public ExprANDContext exprAND() {
 			return getRuleContext(ExprANDContext.class,0);
 		}
-		public TerminalNode AND() { return getToken(TP1Parser.AND, 0); }
+		public TerminalNode AND() { return getToken(programaParser.AND, 0); }
 		public ExprANDContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -839,7 +839,7 @@ public class TP1Parser extends Parser {
 	}
 
 	public static class ExprNOTContext extends ParserRuleContext {
-		public TerminalNode NOT() { return getToken(TP1Parser.NOT, 0); }
+		public TerminalNode NOT() { return getToken(programaParser.NOT, 0); }
 		public ExprNOTContext exprNOT() {
 			return getRuleContext(ExprNOTContext.class,0);
 		}
@@ -951,12 +951,12 @@ public class TP1Parser extends Parser {
 	}
 
 	public static class ComparadoresContext extends ParserRuleContext {
-		public TerminalNode MAYOR() { return getToken(TP1Parser.MAYOR, 0); }
-		public TerminalNode MENOR() { return getToken(TP1Parser.MENOR, 0); }
-		public TerminalNode IGUALIGUAL() { return getToken(TP1Parser.IGUALIGUAL, 0); }
-		public TerminalNode MAYORIGUAL() { return getToken(TP1Parser.MAYORIGUAL, 0); }
-		public TerminalNode MENORIGUAL() { return getToken(TP1Parser.MENORIGUAL, 0); }
-		public TerminalNode DISTINTOIGUAL() { return getToken(TP1Parser.DISTINTOIGUAL, 0); }
+		public TerminalNode MAYOR() { return getToken(programaParser.MAYOR, 0); }
+		public TerminalNode MENOR() { return getToken(programaParser.MENOR, 0); }
+		public TerminalNode IGUALIGUAL() { return getToken(programaParser.IGUALIGUAL, 0); }
+		public TerminalNode MAYORIGUAL() { return getToken(programaParser.MAYORIGUAL, 0); }
+		public TerminalNode MENORIGUAL() { return getToken(programaParser.MENORIGUAL, 0); }
+		public TerminalNode DISTINTOIGUAL() { return getToken(programaParser.DISTINTOIGUAL, 0); }
 		public ComparadoresContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1070,11 +1070,11 @@ public class TP1Parser extends Parser {
 	}
 
 	public static class OperadoresContext extends ParserRuleContext {
-		public TerminalNode MAS() { return getToken(TP1Parser.MAS, 0); }
-		public TerminalNode MENOS() { return getToken(TP1Parser.MENOS, 0); }
-		public TerminalNode ASTERISCO() { return getToken(TP1Parser.ASTERISCO, 0); }
-		public TerminalNode DIVISION() { return getToken(TP1Parser.DIVISION, 0); }
-		public TerminalNode MODULO() { return getToken(TP1Parser.MODULO, 0); }
+		public TerminalNode MAS() { return getToken(programaParser.MAS, 0); }
+		public TerminalNode MENOS() { return getToken(programaParser.MENOS, 0); }
+		public TerminalNode ASTERISCO() { return getToken(programaParser.ASTERISCO, 0); }
+		public TerminalNode DIVISION() { return getToken(programaParser.DIVISION, 0); }
+		public TerminalNode MODULO() { return getToken(programaParser.MODULO, 0); }
 		public OperadoresContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1115,7 +1115,7 @@ public class TP1Parser extends Parser {
 		public ValoresContext valores() {
 			return getRuleContext(ValoresContext.class,0);
 		}
-		public TerminalNode ID() { return getToken(TP1Parser.ID, 0); }
+		public TerminalNode ID() { return getToken(programaParser.ID, 0); }
 		public FactorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1157,11 +1157,11 @@ public class TP1Parser extends Parser {
 	}
 
 	public static class ValoresContext extends ParserRuleContext {
-		public TerminalNode PA() { return getToken(TP1Parser.PA, 0); }
+		public TerminalNode PA() { return getToken(programaParser.PA, 0); }
 		public ExpresionContext expresion() {
 			return getRuleContext(ExpresionContext.class,0);
 		}
-		public TerminalNode PC() { return getToken(TP1Parser.PC, 0); }
+		public TerminalNode PC() { return getToken(programaParser.PC, 0); }
 		public LlamadafuncContext llamadafunc() {
 			return getRuleContext(LlamadafuncContext.class,0);
 		}
@@ -1226,11 +1226,11 @@ public class TP1Parser extends Parser {
 	}
 
 	public static class ValorvarContext extends ParserRuleContext {
-		public TerminalNode NUMINT() { return getToken(TP1Parser.NUMINT, 0); }
-		public TerminalNode VALORCHAR() { return getToken(TP1Parser.VALORCHAR, 0); }
-		public TerminalNode NUMDOUBLE() { return getToken(TP1Parser.NUMDOUBLE, 0); }
-		public TerminalNode TRUE() { return getToken(TP1Parser.TRUE, 0); }
-		public TerminalNode FALSE() { return getToken(TP1Parser.FALSE, 0); }
+		public TerminalNode NUMINT() { return getToken(programaParser.NUMINT, 0); }
+		public TerminalNode VALORCHAR() { return getToken(programaParser.VALORCHAR, 0); }
+		public TerminalNode NUMDOUBLE() { return getToken(programaParser.NUMDOUBLE, 0); }
+		public TerminalNode TRUE() { return getToken(programaParser.TRUE, 0); }
+		public TerminalNode FALSE() { return getToken(programaParser.FALSE, 0); }
 		public ValorvarContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1271,7 +1271,7 @@ public class TP1Parser extends Parser {
 		public ListaContext lista() {
 			return getRuleContext(ListaContext.class,0);
 		}
-		public TerminalNode PUNTOYCOMA() { return getToken(TP1Parser.PUNTOYCOMA, 0); }
+		public TerminalNode PUNTOYCOMA() { return getToken(programaParser.PUNTOYCOMA, 0); }
 		public AsignacionvContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1302,10 +1302,10 @@ public class TP1Parser extends Parser {
 	}
 
 	public static class TipofuncContext extends ParserRuleContext {
-		public TerminalNode INT() { return getToken(TP1Parser.INT, 0); }
-		public TerminalNode CHAR() { return getToken(TP1Parser.CHAR, 0); }
-		public TerminalNode DOUBLE() { return getToken(TP1Parser.DOUBLE, 0); }
-		public TerminalNode VOID() { return getToken(TP1Parser.VOID, 0); }
+		public TerminalNode INT() { return getToken(programaParser.INT, 0); }
+		public TerminalNode CHAR() { return getToken(programaParser.CHAR, 0); }
+		public TerminalNode DOUBLE() { return getToken(programaParser.DOUBLE, 0); }
+		public TerminalNode VOID() { return getToken(programaParser.VOID, 0); }
 		public TipofuncContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1346,12 +1346,12 @@ public class TP1Parser extends Parser {
 		public TipofuncContext tipofunc() {
 			return getRuleContext(TipofuncContext.class,0);
 		}
-		public TerminalNode ID() { return getToken(TP1Parser.ID, 0); }
-		public TerminalNode PA() { return getToken(TP1Parser.PA, 0); }
+		public TerminalNode ID() { return getToken(programaParser.ID, 0); }
+		public TerminalNode PA() { return getToken(programaParser.PA, 0); }
 		public DeclaracionfuncContext declaracionfunc() {
 			return getRuleContext(DeclaracionfuncContext.class,0);
 		}
-		public TerminalNode PC() { return getToken(TP1Parser.PC, 0); }
+		public TerminalNode PC() { return getToken(programaParser.PC, 0); }
 		public DefinicionContext definicion() {
 			return getRuleContext(DefinicionContext.class,0);
 		}
@@ -1422,11 +1422,11 @@ public class TP1Parser extends Parser {
 		public TipovarContext tipovar() {
 			return getRuleContext(TipovarContext.class,0);
 		}
-		public TerminalNode ID() { return getToken(TP1Parser.ID, 0); }
+		public TerminalNode ID() { return getToken(programaParser.ID, 0); }
 		public DeclaracionfuncContext declaracionfunc() {
 			return getRuleContext(DeclaracionfuncContext.class,0);
 		}
-		public TerminalNode COMA() { return getToken(TP1Parser.COMA, 0); }
+		public TerminalNode COMA() { return getToken(programaParser.COMA, 0); }
 		public DeclaracionfuncContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1587,7 +1587,7 @@ public class TP1Parser extends Parser {
 		public ExpresionContext expresion() {
 			return getRuleContext(ExpresionContext.class,0);
 		}
-		public TerminalNode PUNTOYCOMA() { return getToken(TP1Parser.PUNTOYCOMA, 0); }
+		public TerminalNode PUNTOYCOMA() { return getToken(programaParser.PUNTOYCOMA, 0); }
 		public ExpresionDefContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1640,19 +1640,19 @@ public class TP1Parser extends Parser {
 	}
 
 	public static class ExpresionIFContext extends ParserRuleContext {
-		public TerminalNode IF() { return getToken(TP1Parser.IF, 0); }
-		public TerminalNode PA() { return getToken(TP1Parser.PA, 0); }
+		public TerminalNode IF() { return getToken(programaParser.IF, 0); }
+		public TerminalNode PA() { return getToken(programaParser.PA, 0); }
 		public ExpSimpleContext expSimple() {
 			return getRuleContext(ExpSimpleContext.class,0);
 		}
-		public TerminalNode PC() { return getToken(TP1Parser.PC, 0); }
+		public TerminalNode PC() { return getToken(programaParser.PC, 0); }
 		public List<DefinicionContext> definicion() {
 			return getRuleContexts(DefinicionContext.class);
 		}
 		public DefinicionContext definicion(int i) {
 			return getRuleContext(DefinicionContext.class,i);
 		}
-		public TerminalNode ELSE() { return getToken(TP1Parser.ELSE, 0); }
+		public TerminalNode ELSE() { return getToken(programaParser.ELSE, 0); }
 		public ExpresionIFContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1714,12 +1714,12 @@ public class TP1Parser extends Parser {
 	}
 
 	public static class ExpresionWHILEContext extends ParserRuleContext {
-		public TerminalNode WHILE() { return getToken(TP1Parser.WHILE, 0); }
-		public TerminalNode PA() { return getToken(TP1Parser.PA, 0); }
+		public TerminalNode WHILE() { return getToken(programaParser.WHILE, 0); }
+		public TerminalNode PA() { return getToken(programaParser.PA, 0); }
 		public ExpSimpleContext expSimple() {
 			return getRuleContext(ExpSimpleContext.class,0);
 		}
-		public TerminalNode PC() { return getToken(TP1Parser.PC, 0); }
+		public TerminalNode PC() { return getToken(programaParser.PC, 0); }
 		public DefinicionContext definicion() {
 			return getRuleContext(DefinicionContext.class,0);
 		}
@@ -1759,12 +1759,12 @@ public class TP1Parser extends Parser {
 	}
 
 	public static class ExpresionFORContext extends ParserRuleContext {
-		public TerminalNode FOR() { return getToken(TP1Parser.FOR, 0); }
-		public TerminalNode PA() { return getToken(TP1Parser.PA, 0); }
+		public TerminalNode FOR() { return getToken(programaParser.FOR, 0); }
+		public TerminalNode PA() { return getToken(programaParser.PA, 0); }
 		public LoopCtrlContext loopCtrl() {
 			return getRuleContext(LoopCtrlContext.class,0);
 		}
-		public TerminalNode PC() { return getToken(TP1Parser.PC, 0); }
+		public TerminalNode PC() { return getToken(programaParser.PC, 0); }
 		public DefinicionContext definicion() {
 			return getRuleContext(DefinicionContext.class,0);
 		}
@@ -1879,7 +1879,7 @@ public class TP1Parser extends Parser {
 		public ExpSimpleContext expSimple() {
 			return getRuleContext(ExpSimpleContext.class,0);
 		}
-		public TerminalNode PUNTOYCOMA() { return getToken(TP1Parser.PUNTOYCOMA, 0); }
+		public TerminalNode PUNTOYCOMA() { return getToken(programaParser.PUNTOYCOMA, 0); }
 		public LoopCondContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1941,13 +1941,13 @@ public class TP1Parser extends Parser {
 	}
 
 	public static class LlamadafuncContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(TP1Parser.ID, 0); }
-		public TerminalNode PA() { return getToken(TP1Parser.PA, 0); }
+		public TerminalNode ID() { return getToken(programaParser.ID, 0); }
+		public TerminalNode PA() { return getToken(programaParser.PA, 0); }
 		public ArgumentosContext argumentos() {
 			return getRuleContext(ArgumentosContext.class,0);
 		}
-		public TerminalNode PC() { return getToken(TP1Parser.PC, 0); }
-		public TerminalNode PUNTOYCOMA() { return getToken(TP1Parser.PUNTOYCOMA, 0); }
+		public TerminalNode PC() { return getToken(programaParser.PC, 0); }
+		public TerminalNode PUNTOYCOMA() { return getToken(programaParser.PUNTOYCOMA, 0); }
 		public LlamadafuncContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2041,7 +2041,7 @@ public class TP1Parser extends Parser {
 		public ListaArgsContext listaArgs() {
 			return getRuleContext(ListaArgsContext.class,0);
 		}
-		public TerminalNode COMA() { return getToken(TP1Parser.COMA, 0); }
+		public TerminalNode COMA() { return getToken(programaParser.COMA, 0); }
 		public ListaArgsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2106,11 +2106,11 @@ public class TP1Parser extends Parser {
 	}
 
 	public static class ReturnDContext extends ParserRuleContext {
-		public TerminalNode RETURN() { return getToken(TP1Parser.RETURN, 0); }
+		public TerminalNode RETURN() { return getToken(programaParser.RETURN, 0); }
 		public ExpresionContext expresion() {
 			return getRuleContext(ExpresionContext.class,0);
 		}
-		public TerminalNode PUNTOYCOMA() { return getToken(TP1Parser.PUNTOYCOMA, 0); }
+		public TerminalNode PUNTOYCOMA() { return getToken(programaParser.PUNTOYCOMA, 0); }
 		public ReturnDContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
