@@ -12,7 +12,7 @@ public class ErrorListener {
     }
 
     public static void printError(int line, String error) {
-        System.out.println("Error en la linea nro: " + line + " " +error);
+        System.out.println("SE ENCONTRO EL SIGUIENTE ERROR EN LA LINEA " + line + " " +error);
     }
 
     public Boolean thereIsError() {
