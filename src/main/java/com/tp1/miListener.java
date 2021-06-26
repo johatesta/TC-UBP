@@ -92,7 +92,7 @@ public class miListener extends programaBaseListener {
         }
         else {
             //Variable no declarada
-            ErrorListener.printError(ctx.getStop().getLine(), " La variables --> "+ ctx.ID().getText() +" no esta declarado");
+            ErrorListener.printError(ctx.getStop().getLine(), "ERROR: La variables --> "+ ctx.ID().getText() +" no esta declarado");
         }
     }
   
@@ -114,8 +114,8 @@ public class miListener extends programaBaseListener {
                 for (ID id : paramFuncion) {
                     if (id.getNombre() != "") {
                         if (this.simbolTable.isVariableDeclared(id)) {
-                            //parser de error --> variable ya declarada
-                            ErrorListener.printError(ctx.getStop().getLine(), "La variable "+ id.getNombre() +" ya ha sido declarada");
+                            
+                            ErrorListener.printError(ctx.getStop().getLine(), "ERROR: La variable "+ id.getNombre() +" ya ha sido declarada");
                         }
                         this.simbolTable.addParamFuncion(id);
                     }
@@ -135,27 +135,27 @@ public class miListener extends programaBaseListener {
                 while(inst != null) {
                     if (inst.instruccion() != null){
                         if(inst.instruccion().finalizar_con_return() != null) {
-                            // encontre retorno
+                            
                             if (ctx.tipo_de_datos() != null) {
                                 if(inst.instruccion().finalizar_con_return().term() == null ) {
-                                    // parser de error --> falta valor de return
-                                    ErrorListener.printError(ctx.getStop().getLine(), " Debe retornar un valor");
+                                    // no retorna valor
+                                    ErrorListener.printError(ctx.getStop().getLine(), "ERROR: Debe retornar un valor");
                                     return;
                                 }
                             }
                             else if(inst.instruccion().finalizar_con_return().term() != null) {
-                                // parser de error --> return con operacion en funcion void
-                                ErrorListener.printError(ctx.getStop().getLine(), "la función void no debe devolver un valor!");
+                                // ERROR PARA LAS FUNCIONES VACIAS
+                                ErrorListener.printError(ctx.getStop().getLine(), "ERROR: LAS FUNCIONES VOID NO DEVUELVEN VALORES");
                             }
                             return;
                         }
                     }
                     inst = inst.instrucciones();
                 }
-                // si no tiene return valido que tipo funcion sea void
+                // FUNCIONES NO Void
                 if (!ctx.tipo_de_datos().getText().equals("void")){
                     //parser de error
-                    ErrorListener.printError(ctx.getStop().getLine(), "Debe retornar un valor");
+                    ErrorListener.printError(ctx.getStop().getLine(), "ERROR: SE Debe retornar un valor");
                     return ;   
                 }
             }
@@ -167,7 +167,7 @@ public class miListener extends programaBaseListener {
     public void exitPuntocoma(programaParser.PuntocomaContext ctx) {
         if (ctx.PYQ() != null) {
             if (!ctx.PYQ().getText().equals(";")) {
-                ErrorListener.printError(ctx.getStop().getLine(),"Falta punto y coma");
+                ErrorListener.printError(ctx.getStop().getLine(),"ERROR: Falta punto y coma");
             }
         }
     }
