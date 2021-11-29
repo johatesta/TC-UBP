@@ -1,4 +1,4 @@
-
+// Generated from c:\Users\USUARIO\Documents\TC-UBP\src\main\java\com\tp1\programa.g4 by ANTLR 4.8
 
 package com.tp1;
 

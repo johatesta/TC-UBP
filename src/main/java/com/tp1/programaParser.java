@@ -290,6 +290,7 @@ public class programaParser extends Parser {
 		return _localctx;
 	}
 
+	
 	public static class PuntocomaContext extends ParserRuleContext {
 		public TerminalNode PYQ() { return getToken(programaParser.PYQ, 0); }
 		public PuntocomaContext(ParserRuleContext parent, int invokingState) {

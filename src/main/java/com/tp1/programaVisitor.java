@@ -1,6 +1,9 @@
-
+// Generated from c:\Users\USUARIO\Documents\TC-UBP\src\main\java\com\tp1\programa.g4 by ANTLR 4.8
 
 package com.tp1;
+
+import com.tp1.programaParser.InstruccionContext;
+
 
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -38,10 +41,10 @@ public interface programaVisitor<T> extends ParseTreeVisitor<T> {
 	T visitPuntocoma(programaParser.PuntocomaContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link programaParser#instruccion}.
-	 * @param ctx the parse tree
+	 * @param instruccionContext the parse tree
 	 * @return the visitor result
 	 */
-	T visitInstruccion(programaParser.InstruccionContext ctx);
+	T visitInstruccion(InstruccionContext instruccionContext);
 	/**
 	 * Visit a parse tree produced by {@link programaParser#verificador}.
 	 * @param ctx the parse tree
