@@ -1,66 +1,44 @@
 package com.tp1.TablaSimbolos;
 
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.List;
+import java.util.ArrayList;
 
-public class Funcion extends ID {
+/**
+ * Funcion
+ */
+public class Funcion extends Id {
 
-    private LinkedList<ID> parametros;
+    private List<Variable> parametros;
 
-  
-    public Funcion() {
-        this.parametros = new LinkedList<ID>();
+    public Funcion(){
+        super();
+        this.parametros = new ArrayList<Variable>();
     }
 
-    public Funcion(String tipo, String nombre) {
-        super();
-        this.parametros = new LinkedList<ID>();
-        this.setTipo(tipo);
-        this.setNombre(nombre);
-        this.setUsado(true);
+    public Funcion(boolean inicializado, boolean utilizado, String tipoDato, String tokenNombre, List<Variable> parametros){
+        super(inicializado, utilizado, tipoDato, tokenNombre);
+        this.parametros = parametros;
+    }
+
+    public void setParametros(List<Variable> parametros) {
+        this.parametros = parametros;
     }
     
-    public LinkedList<ID> getParametros() {
-        return this.parametros;
+    public List<Variable> getParametros() {
+        return parametros;
     }
 
-    public void setParametros(LinkedList<ID> param) {
-        this.parametros = param;
+    public boolean areParametersEquals(List<Variable> parameters){
+        return this.parametros.equals(parameters);
     }
 
-    public Boolean addParametro(ID param) {
-        return this.parametros.add(param);
-    }
 
-    public Boolean deleteParametro(ID param) {
-        return this.parametros.remove(param);
-    }
 
+    
+    
     @Override
-    public String toString() {
-        String funcion = this.getTipo() + " " + this.getNombre() + "(";
-        Iterator<ID> it = this.parametros.iterator();
-
-        int i = 0;
-        while(it.hasNext()) {
-            ID next = it.next();
-
-            if (i != 0) funcion += ", " + next.getTipo() + " " + next.getNombre();
-            else funcion += next.getTipo() + " " + next.getNombre();
-
-            i++;
-        }
-
-        funcion += ")";
-
-        if(this.isUsado()) {
-            funcion += " [funcion usada]";
-        }
-        else {
-            funcion += " [funcion sin usar]";
-        }
-
-        return funcion;
+    public String toString(){
+        return this.getTipoDato() + " " + this.getTokenNombre() + " " + this.parametros.toString();
     }
 
 }

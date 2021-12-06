@@ -1,153 +1,102 @@
 package com.tp1.TablaSimbolos;
 
-import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.ListIterator;
+import java.util.Map.Entry;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-
-
+/**
+ * TablaSimbolos
+ */
 public class TablaSimbolos {
 
-    private LinkedList<HashMap<String, ID>> tablaSimbolos;
-    private LinkedList<HashMap<String, ID>> historialTablaSimbolos;
-    private static TablaSimbolos instance;
-    
+    private LinkedList<HashMap<String, Id>> tablaSimbolos;
 
-    public static TablaSimbolos getInstance() {
-        if(instance == null)
-            instance = new TablaSimbolos();
-
-        return instance;
-    }
-
+    // lista de mapas
     public TablaSimbolos() {
-        this.tablaSimbolos = new LinkedList<HashMap<String, ID>>();
-        this.historialTablaSimbolos = new LinkedList<HashMap<String, ID>>(); 
-        this.addContext();
+        tablaSimbolos = new LinkedList<HashMap<String, Id>>();
     }
 
-    public void addContext() {
-        HashMap<String, ID> context = new HashMap<String,ID>();       
-        this.tablaSimbolos.add(context);
-        this.historialTablaSimbolos.add(context);
+    // crea un nuevo mapa(contexto) dentro de la lista
+    public void enterContext() {
+        HashMap<String, Id> contexto = new HashMap<String, Id>();
+        this.tablaSimbolos.add(contexto);
     }
 
-    public void addParamForContext() {
-        this.tablaSimbolos.add(new HashMap<String, ID>());
-    }
-
-    public int getContext() {
-        return this.tablaSimbolos.size();
-    }
-
-    public void removeContext() {
+    // remueve un mapa(contexto) de la lista
+    public void exitContext() {
         this.tablaSimbolos.removeLast();
     }
 
-    public ID searchId(final ID id) {
-        for(int i = 0; i < this.tablaSimbolos.size(); i++) {
-            if(this.tablaSimbolos.get(i).containsKey(id.getNombre()))
-                return this.tablaSimbolos.get(i).get(id.getNombre());
+    public ArrayList<String> unusedIDs() {
+        ArrayList<String> variablesSinUso = new ArrayList<String>();
+        for (Entry<String, Id> entry : tablaSimbolos.getLast().entrySet()) {
+            if(!entry.getValue().isUtilizado() && !entry.getValue().getTokenNombre().equals("main")){
+                if (entry.getValue() instanceof Funcion && !entry.getValue().isInicializado()) {
+                    continue;
+                }else{
+                    variablesSinUso.add(entry.getKey()); 
+                }
+            }
+        }
+        return variablesSinUso;
+    }
+
+    // pre: recibe el nombre del identificador y los datos asociados(inicializado, utilizado, ...)
+    // pos: agregar un par (clave, valor) a el contexto acutal(ultimo mapa en la lista)
+    public void insert(String name, Id symbol){
+        this.tablaSimbolos.getLast().put(name, symbol);
+    }
+
+    // pre: recibe el nombre del identificador 
+    // pos: realiza una busqueda en el contexto acutal y en contextos superiores al actual,
+    //      si encuentra un identificador con el mismo nombre lo devuelve
+    //      sino encuentra indetificadores con ese nombre devuelve null
+    public Id lookup(String id){
+        Id symbol = lookupLocal(id);
+        if(symbol != null){
+            return symbol;
+        }else{
+            ListIterator<HashMap<String, Id>> symbolsIterator = this.tablaSimbolos.listIterator(tablaSimbolos.size() - 1);
+            while(symbolsIterator.hasPrevious()){
+                symbol = symbolsIterator.previous().get(id);
+                if( symbol != null ){
+                    return symbol;
+                }
+            }
         }
 
+        return symbol;
+    }
+
+    // pre: recibe el nombre de un identificador
+    // pos: devuelve un Id si en el contexto acutal (el ultimo mapa de la lista) existe un identificador con ese nombre
+    //      devuelve null si en el contexto acutal no existe un identificador con ese nombre
+    public Id lookupLocal(String id){
+        Id symbol = tablaSimbolos.getLast().get(id);
+        if(symbol != null){
+            return symbol;
+        }
         return null;
     }
     
-    public ID searchVariable(final String nombre) {
-        for(int i = 0; i < this.tablaSimbolos.size(); i++) {
-            if(this.tablaSimbolos.get(i).containsKey(nombre))
-                return this.tablaSimbolos.get(i).get(nombre);
-        }
-        return null;
-    }
-
-    public void addId(final ID id) {
-        this.tablaSimbolos.getLast().put(id.getNombre(), id);
-        this.historialTablaSimbolos.get(this.historialTablaSimbolos.size() - 1).put(id.getNombre(), id);
-    }
     
-    public Boolean asignacionId(final ID id) {
-        for(int i = this.tablaSimbolos.size() - 1; i >= 0; i--) {
-            if(this.tablaSimbolos.get(i).containsKey(id.getNombre())) {
-                this.tablaSimbolos.get(i).replace(id.getNombre(), id);
-                this.historialTablaSimbolos.get(i).replace(id.getNombre(), id);
-                return true;
-            }
-        }
-        return false;
+    public LinkedList<HashMap<String, Id>> getTablaSimbolos() {
+        return tablaSimbolos;
     }
 
-    public void addFuncion(final Funcion funcion) {
-        this.tablaSimbolos.getLast().put(funcion.getNombre(), funcion);
-        if (this.tablaSimbolos.size() == 0){
-            if (this.historialTablaSimbolos.size() > 1){
-                this.historialTablaSimbolos.get(this.historialTablaSimbolos.size() - 2).put(funcion.getNombre(), funcion);
-            }
-            else {
-                this.historialTablaSimbolos.get(this.historialTablaSimbolos.size() - 1).put(funcion.getNombre(), funcion);
-            }
-        }
-    }
+    // public List<String> unusedIDs(){
+    //     return this.tablaSimbolos.getLast().entrySet().stream()
+    //                                                   .filter(id -> !id.getValue().isUtilizado() && 
+    //                                                                 !id.getValue().getTokenNombre().equals("main"))
+    //                                                   .map(id -> id.getKey())
+    //                                                   .collect(Collectors.toList());
+    // }
 
-    public void addParamFuncion(final ID id) {
-        this.tablaSimbolos.getLast().put(id.getNombre(), id);
-    }
-
-    public boolean isVariableDeclared(final ID id) {
-        for(int i = this.tablaSimbolos.size() - 1; i >= 0; i--) {
-            if (this.tablaSimbolos.get(i).containsKey(id.getNombre())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean isVariableDeclared(final String nombre) {
-        for(int i = this.tablaSimbolos.size() - 1; i >= 0; i--) {
-            if (this.tablaSimbolos.get(i).containsKey(nombre)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public void setUsedId(final String nombre) {
-        for (HashMap<String, ID> contexto : this.tablaSimbolos) {
-            for (ID id : contexto.values()) {
-                if (id.getNombre().equals(nombre))
-                    id.setUsado(true);
-            }
-        }
-    }
-    
-    public Funcion getDefFuncion(final Funcion function) {
-        ID id = this.tablaSimbolos.getFirst().get(function.getNombre());
-        
-        if (id instanceof Funcion)
-            return (Funcion) id;
-        else
-            return null; 
-    }
-
-    public void printTable() {
-        int ctx = 1;
-        System.out.println("\n------TABLA DE SIMBOLOS------");
-        for (HashMap<String, ID> contexto : this.tablaSimbolos) {
-            System.out.println("Contexto: " + ctx++ + " {");
-            for (ID id : contexto.values()) {
-                System.out.println("    " + id.toString());
-            }
-            System.out.println("}");
-        }
-      
-        ctx = 1;
-        
-        for (HashMap<String, ID> contexto : this.historialTablaSimbolos) {
-            System.out.println("Context: " + ctx++ + " {");
-            for (ID id : contexto.values()) {
-                System.out.println("    " + id.toString());
-            }
-            System.out.println("}");
-        }       
+    @Override
+    public String toString() {
+        return tablaSimbolos.toString();
     }
     
 }

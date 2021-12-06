@@ -1,5 +1,5 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.configuration.updateBuildConfiguration": "automatic",
     
         "antlr4.generation.mode": "external",
         "antlr4.generation.visitors": true,

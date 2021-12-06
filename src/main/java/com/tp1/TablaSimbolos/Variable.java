@@ -1,23 +1,31 @@
 package com.tp1.TablaSimbolos;
 
-public class Variable extends ID {
+/**
+ * Variable
+ */
+public class Variable extends Id {
 
-    public Variable() {}
+    public Variable(){
+        super();
+    }
 
-    public Variable(String nombre, String tipo) {
-        super(nombre, tipo);
+    public Variable(boolean inicializado, boolean utilizado, String tipoDato, String tokenNombre){
+        super(inicializado, utilizado, tipoDato, tokenNombre);
     }
 
     @Override
-    public String toString() {
-        String variable = this.getTipo() + " " + this.getNombre();
-
-        if (this.isUsado())
-            variable += " [Variable usada]";
-        else
-            variable += " [Variable sin usar]";
-            
-        return variable;
+    public boolean equals(Object varObject) {
+        Variable var = (Variable)varObject;
+        if( this.getTipoDato().equals(var.getTipoDato()) &&
+            this.getTokenNombre().equals(var.getTokenNombre()))
+            return true;
+        else   
+            return false;
     }
-    
+
+
+    @Override
+    public String toString(){
+        return this.getTipoDato() + " " + this.getTokenNombre() + " " + this.isInicializado() + " " + this.isUtilizado();
+    } 
 }

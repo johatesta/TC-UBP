@@ -1,6 +1,11 @@
 package com.tp1;
 
 import org.antlr.v4.runtime.tree.ParseTree;
+
+import com.tp1.ThreeAddressCode.ThreeAddressCodeVisitor;
+
+import com.tp1.TablaSimbolos.ErrorsListener;
+
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -8,31 +13,35 @@ import org.antlr.v4.runtime.CommonTokenStream;
 public class App {
     public static void main(String[] args) throws Exception {
         // create a CharStream that reads from file
-        CharStream input = CharStreams.fromFileName("src/prueba.c");
-        //CharStream input = CharStreams.fromFileName("src/ejemplo.txt");
+        CharStream input = CharStreams.fromFileName("src/app/ejemplo.txt");
 
         // create a lexer that feeds off of input CharStream
-        programaLexer lexer = new programaLexer(input);
+        reglasLexer lexer = new reglasLexer(input);
         
         // create a buffer of tokens pulled from the lexer
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         
         // create a parser that feeds off the tokens buffer
-        programaParser parser = new programaParser(tokens);
-                
-        // create Listener
-        programaBaseListener escucha = new miListener();
+        reglasParser parser = new reglasParser(tokens);
 
-        // Conecto el objeto con Listeners al parser
-        parser.addParseListener(escucha);
- 
-        // Solicito al parser que comience indicando una regla gramatical
-        // En este caso la regla es el simbolo inicial
-        // parser.s();
-        ParseTree tree =  parser.programa();
-        System.out.println(tree);
-         // Imprime el arbol obtenido
-         System.out.println("ARBOL SINTÁCTICO: " + tree.toStringTree(parser));         
+        // Removemos el error listener que tiene por defecto ANTRL 
+        // y creamos el propio
+        ErrorsListener errorsListener = new ErrorsListener();
+        parser.removeErrorListeners();
+        parser.addErrorListener(errorsListener);
+
+        System.out.println("\n");
         
+        // Creamos nuestro propio Listener
+        reglasBaseListener listener = new MyListener();
+        parser.addParseListener(listener);
+        
+        ParseTree tree = parser.prog();
+
+        // Creamos un Visitor para poder generar el codigo de tres direcciones
+        ThreeAddressCodeVisitor visitor = new ThreeAddressCodeVisitor();
+        visitor.visit(tree);
+        visitor.getResult();
+        visitor.generateCode();
     }
 }

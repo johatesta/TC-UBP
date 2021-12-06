@@ -1,43 +1,58 @@
 package com.tp1.TablaSimbolos;
 
-public class ID {
+/**
+ * Id
+ */
+public abstract class Id {
 
+    private boolean inicializado;
+    private boolean utilizado;
+    private String tipoDato;
+    private String tokenNombre;
 
-    private String nombre_token;
-    private String tipo_Dato;
-    private Boolean usada;
-
-    public ID() {}
-
-    public ID(String nombre, String tipo) {
-        this.nombre_token = nombre;
-        this.tipo_Dato = tipo;
-        this.usada = false;
+    public Id(){
+        
     }
 
-   
-
-    public String getNombre() {
-        return this.nombre_token;
+    public Id(boolean inicializado, boolean utilizado, String tipoDato, String tokenNombre){
+        this.inicializado = inicializado;
+        this.utilizado = utilizado;
+        this.tipoDato = tipoDato;
+        this.tokenNombre = tokenNombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre_token = nombre;
+
+    public void setInicializado(boolean inicializado) {
+        this.inicializado = inicializado;
+    }
+    public boolean isInicializado() {
+        return inicializado;
     }
 
-    public String getTipo() {
-        return this.tipo_Dato;
+    public void setUtilizado(boolean utilizado) {
+        this.utilizado = utilizado;
+    }
+    public boolean isUtilizado() {
+        return utilizado;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo_Dato = tipo;
+    public void setTipoDato(String tipoDato) {
+        this.tipoDato = tipoDato;
+    }
+    public String getTipoDato() {
+        return tipoDato;
+    }
+    
+    public void setTokenNombre(String tokenNombre) {
+        this.tokenNombre = tokenNombre;
+    }
+    public String getTokenNombre() {
+        return tokenNombre;
     }
 
-    public Boolean isUsado() {
-        return this.usada;
+    @Override
+    public String toString() {
+        return String.valueOf(this.isInicializado());
     }
 
-    public void setUsado(Boolean usado) {
-        this.usada = usado;
-    }
 }
