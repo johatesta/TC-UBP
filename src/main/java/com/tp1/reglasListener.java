@@ -1,6 +1,6 @@
-// Generated from c:\Users\USUARIO\Documents\TC-UBP\TP-FINAL\proyectofinal\src\main\java\app\reglas.g4 by ANTLR 4.8
+// Generated from c:\Users\USUARIO\Documents\TC-UBP\src\main\java\com\tp1\reglas.g4 by ANTLR 4.8
 
-package com.tp1;
+package app;
 
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
